@@ -1,0 +1,63 @@
+{
+  "name": "helfy-syntax",
+  "displayName": "Helfy Template Syntax",
+  "description": "Syntax highlighting and snippets for Helfy framework template directives (@if, @for, @field, @bind, @ref, etc.)",
+  "version": "0.0.1",
+  "publisher": "helfy",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/helfy/helfy-syntax"
+  },
+  "engines": {
+    "vscode": "^1.75.0"
+  },
+  "license": "MIT",
+  "categories": ["Programming Languages"],
+  "scripts": {
+    "package": "node scripts/package.js",
+    "package:archive": "node scripts/archive.js"
+  },
+  "dependencies": {
+    "@helfy/helfy-ts-plugin": "^0.0.1"
+  },
+  "devDependencies": {
+    "@vscode/vsce": "^3.0.0",
+    "archiver": "^7.0.0"
+  },
+  "contributes": {
+    "typescriptServerPlugins": [
+      {
+        "name": "@helfy/helfy-ts-plugin",
+        "enableForWorkspaceTypeScriptVersions": true
+      }
+    ],
+    "grammars": [
+      {
+        "scopeName": "source.helfy-injection",
+        "path": "./src/syntaxes/helfy.tmLanguage.json",
+        "injectTo": ["source.tsx", "source.ts"]
+      }
+    ],
+    "snippets": [
+      {
+        "language": "typescriptreact",
+        "path": "./src/snippets/helfy.json"
+      }
+    ],
+    "configurationDefaults": {
+      "[typescriptreact]": {
+        "editor.semanticHighlighting.enabled": false
+      }
+    },
+    "configuration": {
+      "title": "Helfy",
+      "properties": {
+        "helfy.disableSemanticHighlightingForTSX": {
+          "type": "boolean",
+          "default": true,
+          "description": "Disable semantic highlighting for TSX when using @ref/@bind/@field (ts-plugin transforms source, causing token position mismatch)."
+        }
+      }
+    }
+  }
+}
