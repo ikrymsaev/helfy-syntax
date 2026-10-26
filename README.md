@@ -6,8 +6,8 @@ VS Code based editors. This repository hosts its releases.
 For `.hf` files it provides:
 
 - syntax highlighting of markup, directives (`@if`, `@for`, `@slot`, `@safe`, `@fragment`, ...), expressions and
-  `<style>`;
-- type checking of template expressions against the component class (`@template<Component>()`);
+  `@styles` (including `{expr}`, `@bind`, `@if` and `@add`);
+- type checking of template and style expressions against the component class (`@template<Component>()`);
 - hover, go-to-definition and completion in expressions;
 - syntax errors of the template;
 - formatting.
